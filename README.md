@@ -6,7 +6,7 @@ A dark-themed event discovery app with **glassmorphism UI**, built for the inter
 
 | Explore Screen | Saved Events |
 |:---:|:---:|
-| <img src="assets/screenshots/explore_screen.png" width="300" /> | <img src="assets/screenshots/saved_screen.png" width="300" /> |
+| ![Explore Screen](assets/screenshots/explore_screen.png) | ![Saved Events](assets/screenshots/saved_screen.png) |
 
 ## ✨ Screens Implemented
 
