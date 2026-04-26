@@ -171,15 +171,15 @@ class _NavBarItemState extends State<_NavBarItem> {
                 duration: const Duration(milliseconds: 200),
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: widget.isActive 
-                    ? AppTheme.accentCyan.withValues(alpha: 0.1) 
+                  color: widget.isActive
+                    ? AppTheme.accentCyan.withValues(alpha: 0.1)
                     : (_isHovered ? Colors.white.withValues(alpha: 0.05) : Colors.transparent),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
                   widget.isActive ? widget.item.active : widget.item.icon,
-                  color: widget.isActive 
-                    ? AppTheme.accentCyan 
+                  color: widget.isActive
+                    ? AppTheme.accentCyan
                     : (_isHovered ? AppTheme.textPrimary : AppTheme.textMuted),
                   size: 24,
                 ),
@@ -188,8 +188,8 @@ class _NavBarItemState extends State<_NavBarItem> {
             Text(
               widget.item.label,
               style: GoogleFonts.inter(
-                color: widget.isActive 
-                  ? AppTheme.textPrimary 
+                color: widget.isActive
+                  ? AppTheme.textPrimary
                   : (_isHovered ? AppTheme.textSecondary : AppTheme.textMuted),
                 fontSize: 10,
                 fontWeight: widget.isActive ? FontWeight.w800 : FontWeight.w500,

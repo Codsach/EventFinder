@@ -53,7 +53,7 @@ class _CategoryChipState extends State<CategoryChip> {
             color: widget.isSelected ? null : AppTheme.bgCard,
             border: Border.all(
               color: widget.isSelected 
-                ? color.withValues(alpha: 0.5) 
+                ? color.withValues(alpha: 0.5)
                 : (_isHovered ? AppTheme.accentCyan.withValues(alpha: 0.3) : AppTheme.glassBorder),
               width: 1.5,
             ),

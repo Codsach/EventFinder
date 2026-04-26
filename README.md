@@ -2,6 +2,12 @@
 
 A dark-themed event discovery app with **glassmorphism UI**, built for the internship assignment.
 
+## 📱 Screenshots
+
+| Explore Screen | Saved Events |
+|:---:|:---:|
+| <img src="assets/screenshots/explore_screen.png" width="300" /> | <img src="assets/screenshots/saved_screen.png" width="300" /> |
+
 ## ✨ Screens Implemented
 
 ### 1. Home Screen
@@ -20,6 +26,24 @@ A dark-themed event discovery app with **glassmorphism UI**, built for the inter
 - Attendee count display
 - "Get Tickets" CTA button with per-category gradient color
 - Modal bottom sheet on ticket tap
+
+### 3. Saved Events Screen
+- Persistent list of bookmarked events
+- Swipe-to-remove gesture with undo SnackBar
+- Animated empty state when no events are saved
+- Quick navigation back to event details
+
+### 4. Create Event Screen
+- Interactive form with glassmorphism styling
+- Custom date and time pickers
+- Per-category accent color selection
+- Animated submission state and success dialog
+
+### 5. Profile & Settings
+- User stats overview (Attended, Saved, Reviews)
+- App preferences: Push notifications, Location, Dark mode
+- Integrated access to saved events and history
+- Glass-themed edit profile interface
 
 ## 🛠 Tech Stack
 
@@ -42,9 +66,12 @@ lib/
 ├── services/
 │   └── event_service.dart # API + fallback mock data
 ├── screens/
+│   ├── splash_screen.dart
 │   ├── home_screen.dart
-
-│   └── event_detail_screen.dart
+│   ├── event_detail_screen.dart
+│   ├── saved_events_screen.dart
+│   ├── add_event_screen.dart
+│   └── profile_screen.dart
 └── widgets/
     ├── event_card.dart
     ├── event_card_shimmer.dart
