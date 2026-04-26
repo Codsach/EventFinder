@@ -33,6 +33,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
     (label: 'Reviews', value: '7', icon: Icons.star_rounded, color: Color(0xFFFFD700)),
   ];
 
+  void _showComingSoon() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppTheme.bgCard,
+        content: const Text('Feature coming soon',
+            style: TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.w600)),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 2),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -295,21 +309,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
         color: AppTheme.accentCyan,
         title: 'Event History',
         subtitle: '12 events attended',
-        onTap: () {},
+        onTap: _showComingSoon,
       ),
       (
         icon: Icons.payment_rounded,
         color: const Color(0xFFFFD700),
         title: 'Payment Methods',
         subtitle: 'Manage cards & UPI',
-        onTap: () {},
+        onTap: _showComingSoon,
       ),
       (
         icon: Icons.help_outline_rounded,
         color: AppTheme.accentPurple,
         title: 'Help & Support',
         subtitle: 'FAQs, contact us',
-        onTap: () {},
+        onTap: _showComingSoon,
       ),
     ];
 
@@ -372,7 +386,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
-      builder: (ctx) => _EditProfileSheet(),
+      builder: (ctx) => _EditProfileSheet(onSave: _showComingSoon),
     );
   }
 
@@ -432,7 +446,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(width: 14),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => Navigator.pop(ctx),
+                      onPressed: () {
+                        Navigator.pop(ctx);
+                        _showComingSoon();
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.accentPink,
                         foregroundColor: Colors.white,
@@ -597,6 +614,9 @@ class _Divider extends StatelessWidget {
 }
 
 class _EditProfileSheet extends StatelessWidget {
+  final VoidCallback onSave;
+  const _EditProfileSheet({required this.onSave});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -650,7 +670,10 @@ class _EditProfileSheet extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      onSave();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.accentCyan,
                       foregroundColor: AppTheme.bgDeep,

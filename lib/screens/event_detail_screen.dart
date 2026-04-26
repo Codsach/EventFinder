@@ -44,6 +44,20 @@ class _EventDetailScreenState extends State<EventDetailScreen>
     HapticFeedback.lightImpact();
   }
 
+  void _showComingSoon() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppTheme.bgCard,
+        content: const Text('Feature coming soon',
+            style: TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.w600)),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 2),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final event = widget.event;
@@ -97,7 +111,10 @@ class _EventDetailScreenState extends State<EventDetailScreen>
                     Padding(
                       padding: const EdgeInsets.only(right: 8, top: 8, bottom: 8),
                       child: _CircleButton(
-                        onTap: () => HapticFeedback.selectionClick(),
+                        onTap: () {
+                          HapticFeedback.selectionClick();
+                          _showComingSoon();
+                        },
                         child: const Icon(Icons.share_rounded,
                             color: AppTheme.textPrimary, size: 18),
                       ),

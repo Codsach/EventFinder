@@ -64,6 +64,20 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void _showComingSoon() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppTheme.bgCard,
+        content: const Text('Feature coming soon',
+            style: TextStyle(color: AppTheme.textPrimary, fontWeight: FontWeight.w600)),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 2),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+      ),
+    );
+  }
+
   void _applyFilter() {
     final query = _searchCtrl.text.toLowerCase().trim();
     setState(() {
@@ -238,27 +252,30 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildNotificationButton() {
-    return Container(
-      width: 46, height: 46,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppTheme.glassWhite,
-        border: Border.all(color: AppTheme.glassBorder),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          const Icon(Icons.notifications_outlined,
-              color: AppTheme.textPrimary, size: 22),
-          Positioned(
-            top: 9, right: 9,
-            child: Container(
-              width: 8, height: 8,
-              decoration: const BoxDecoration(
-                  color: AppTheme.accentPink, shape: BoxShape.circle),
+    return GestureDetector(
+      onTap: _showComingSoon,
+      child: Container(
+        width: 46, height: 46,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: AppTheme.glassWhite,
+          border: Border.all(color: AppTheme.glassBorder),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            const Icon(Icons.notifications_outlined,
+                color: AppTheme.textPrimary, size: 22),
+            Positioned(
+              top: 9, right: 9,
+              child: Container(
+                width: 8, height: 8,
+                decoration: const BoxDecoration(
+                    color: AppTheme.accentPink, shape: BoxShape.circle),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -295,15 +312,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     _applyFilter();
                   },
                 )
-              : Container(
-                  margin: const EdgeInsets.all(8),
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: AppTheme.accentCyan.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(12),
+              : GestureDetector(
+                  onTap: _showComingSoon,
+                  child: Container(
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: AppTheme.accentCyan.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(Icons.tune_rounded,
+                        color: AppTheme.accentCyan, size: 18),
                   ),
-                  child: const Icon(Icons.tune_rounded,
-                      color: AppTheme.accentCyan, size: 18),
                 ),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(vertical: 16),

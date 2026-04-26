@@ -95,14 +95,20 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                 const SizedBox(height: 32),
 
                 // Title with staggered animation
-                Text(
-                  'EventFinder',
-                  style: GoogleFonts.syne(
-                    color: AppTheme.textPrimary,
-                    fontSize: 42,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: -1.5,
-                    height: 1,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      'EventFinder',
+                      style: GoogleFonts.syne(
+                        color: AppTheme.textPrimary,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -1.2,
+                        height: 1,
+                      ),
+                    ),
                   ),
                 )
                 .animate()
